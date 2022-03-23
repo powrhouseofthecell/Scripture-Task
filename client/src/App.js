@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './App.css';
 import axios from 'axios';
 
 const App = () => {
@@ -16,14 +17,17 @@ const App = () => {
 
   return (
     <div>
-      <h1>This is the form</h1>
+      <h1>Save data to Atlas</h1>
       <form>
         <input
+          placeholder='John'
+          className='name'
           type='text'
           required
           value={data}
           onChange={(e) => setData(e.target.value)}
         />
+        <br />
         <input type='submit' value='Save' onClick={handleClick} />
       </form>
     </div>

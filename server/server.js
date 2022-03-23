@@ -21,6 +21,10 @@ const nameSchema = new mongoose.Schema({
 });
 const Name = mongoose.model('Name', nameSchema);
 
+app.get('/saved', (req, res) => {
+  res.send('<h1>Data saved</h1>');
+});
+
 app.post('/sendData', async (req, res) => {
   console.log(req.body);
   const name = new Name({
