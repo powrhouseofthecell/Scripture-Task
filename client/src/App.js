@@ -1,20 +1,17 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 const App = () => {
   const [data, setData] = useState('');
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const blog = 'Zuhaib Nazir Shah';
-
-    await fetch('http://localhost:4000/sendData', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(blog),
-    }).then(() => {
-      console.log('new blog added');
-      console.log(blog);
-    });
+    axios
+      .post('http://localhost:4000/sendData', {
+        value: data,
+      })
+      .then((resp) => console.log(resp.data))
+      .catch((err) => console.log(err));
   };
 
   return (
